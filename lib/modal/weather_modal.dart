@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 // WeatherModel weatherModelFromJson(String str) =>
 //     WeatherModel.fromJson(json.decode(str));
 //
@@ -135,8 +133,8 @@ class Current {
 }
 
 class Condition {
-  Text text;
-  Icon icon;
+  Texts text;
+  Icones icon;
   int code;
 
   Condition({
@@ -158,7 +156,7 @@ class Condition {
       };
 }
 
-enum Icon {
+enum Icones {
   CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_356_PNG,
   CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_308_PNG,
   CDN_WEATHERAPI_COM_WEATHER_64_X64_NIGHT_353_PNG,
@@ -168,23 +166,23 @@ enum Icon {
 
 final iconValues = EnumValues({
   "//cdn.weatherapi.com/weather/64x64/day/308.png":
-      Icon.CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_308_PNG,
+      Icones.CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_308_PNG,
   "//cdn.weatherapi.com/weather/64x64/day/353.png":
-      Icon.CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_353_PNG,
+      Icones.CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_353_PNG,
   "//cdn.weatherapi.com/weather/64x64/day/356.png":
-      Icon.CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_356_PNG,
+      Icones.CDN_WEATHERAPI_COM_WEATHER_64_X64_DAY_356_PNG,
   "//cdn.weatherapi.com/weather/64x64/night/353.png":
-      Icon.CDN_WEATHERAPI_COM_WEATHER_64_X64_NIGHT_353_PNG,
+      Icones.CDN_WEATHERAPI_COM_WEATHER_64_X64_NIGHT_353_PNG,
   "//cdn.weatherapi.com/weather/64x64/night/356.png":
-      Icon.CDN_WEATHERAPI_COM_WEATHER_64_X64_NIGHT_356_PNG
+      Icones.CDN_WEATHERAPI_COM_WEATHER_64_X64_NIGHT_356_PNG
 });
 
-enum Text { MODERATE_OR_HEAVY_RAIN_SHOWER, HEAVY_RAIN, LIGHT_RAIN_SHOWER }
+enum Texts { MODERATE_OR_HEAVY_RAIN_SHOWER, HEAVY_RAIN, LIGHT_RAIN_SHOWER }
 
 final textValues = EnumValues({
-  "Heavy rain": Text.HEAVY_RAIN,
-  "Light rain shower": Text.LIGHT_RAIN_SHOWER,
-  "Moderate or heavy rain shower": Text.MODERATE_OR_HEAVY_RAIN_SHOWER
+  "Heavy rain": Texts.HEAVY_RAIN,
+  "Light rain shower": Texts.LIGHT_RAIN_SHOWER,
+  "Moderate or heavy rain shower": Texts.MODERATE_OR_HEAVY_RAIN_SHOWER
 });
 
 enum WindDir { SW }
