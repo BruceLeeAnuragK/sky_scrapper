@@ -21,6 +21,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ),
         centerTitle: true,
       ),
+      body: StreamBuilder(
+        builder: (context, snapshot) => Column(),
+      ),
     );
   }
 }
