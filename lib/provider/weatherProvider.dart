@@ -8,7 +8,7 @@ class WeatherProvider extends ChangeNotifier {
     searchcity();
   }
   searchcity({String val = "surat"}) async {
-    data = await APIhelper.apihelper.getWallpaperResponse(query: val) ?? [];
+    data = await APIhelper.apihelper.getWeatherResponse(query: val) ?? [];
     notifyListeners();
     return 0;
   }

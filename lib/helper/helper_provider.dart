@@ -1,20 +1,20 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:sky_scrapper/modal/weather_modal.dart';
 
 class APIhelper {
   APIhelper._();
   static final APIhelper apihelper = APIhelper._();
-  String Api = "https://dummyjson.com/posts/15";
-  String Api2 = "https://jsonplaceholder.typicode.com/posts";
-  Future<List?> getWallpaperResponse({required String query}) async {
-    String WallpaperApi =
-        "https://pixabay.com/api/?key=37043026-230b0692a2c7c3b735944c114&q=$query";
-    http.Response response = await http.get(Uri.parse(WallpaperApi));
+
+  Future<WeatherModel?> getWeatherResponse({required String query}) async {
+    String WeatherApi =
+        "http://api.weatherapi.com/v1/forecast.json?key= c6f63f932d1e4e3b8c334544232407&q=$query&days=1&aqi=no&alerts=no";
+    http.Response response = await http.get(Uri.parse(WeatherApi));
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      List allData = data["hits"];
+      List<WeatherModel> allData = data["location"];
       return allData;
     }
   }
