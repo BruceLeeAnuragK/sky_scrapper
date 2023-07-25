@@ -7,26 +7,30 @@ import '../modal/connectivity_modal.dart';
 class WeatherProvider extends ChangeNotifier {
   Connectivity connectivity = Connectivity();
   Connect connectmodal = Connect(
-    connectivityStatus: "Waiting for the Network...",
+    connectivityStatus: "Waiting",
   );
   void check() {
     connectmodal.connectivitystream = connectivity.onConnectivityChanged.listen(
       (ConnectivityResult connectivityresult) {
         switch (connectivityresult) {
           case ConnectivityResult.mobile:
-            connectmodal.connectivityStatus = "Mobile network";
+            connectmodal.connectivityStatus = "Mobile";
+            notifyListeners();
             break;
 
           case ConnectivityResult.wifi:
-            connectmodal.connectivityStatus = "Wifi network";
+            connectmodal.connectivityStatus = "Wifi";
+            notifyListeners();
             break;
 
           case ConnectivityResult.none:
-            connectmodal.connectivityStatus = "Waiting for the Network...";
+            connectmodal.connectivityStatus = "Waiting";
+            notifyListeners();
             break;
 
           default:
-            print("No Acccess");
+            connectmodal.connectivityStatus = "Waiting";
+            notifyListeners();
             break;
         }
       },
@@ -34,13 +38,13 @@ class WeatherProvider extends ChangeNotifier {
   }
 
   /////
-  List data = [];
+  late Map data;
 
   WeatherProvider() {
     searchcity();
   }
   searchcity({String val = "surat"}) async {
-    data = await APIhelper.apihelper.getWeatherResponse(query: val) ?? [];
+    data = await APIhelper.apihelper.getWeatherResponse(query: val) ?? {};
     notifyListeners();
     return 0;
   }

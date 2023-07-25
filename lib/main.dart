@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sky_scrapper/provider/weatherProvider.dart';
-import 'package:sky_scrapper/view/splash_screen.dart';
-import 'package:sky_scrapper/view/weather_screen.dart';
+import 'package:sky_scrapper1/provider/weatherProvider.dart';
+import 'package:sky_scrapper1/view/splash_screen.dart';
+import 'package:sky_scrapper1/view/weather_screen.dart';
 
 void main() {
   runApp(
