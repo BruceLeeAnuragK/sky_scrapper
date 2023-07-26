@@ -8,11 +8,13 @@ class WeatherModel {
   Current current;
   Forecast forecast;
   String name;
+  String icon;
   WeatherModel({
     required this.location,
     required this.current,
     required this.forecast,
     required this.name,
+    required this.icon,
   });
 
   factory WeatherModel.fromJson({required Map<String, dynamic> json}) =>
@@ -21,12 +23,15 @@ class WeatherModel {
         current: Current.fromJson(json["current"]),
         forecast: Forecast.fromJson(json["forecast"]),
         name: json['location']['name'],
+        icon: json['current']['condition']["icon"],
       );
 
   Map<String, dynamic> toJson() => {
         "location": location.toJson(),
         "current": current.toJson(),
         "forecast": forecast.toJson(),
+        "name": location.toString(),
+        "icon": current.toString(),
       };
 }
 

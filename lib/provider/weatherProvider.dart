@@ -20,6 +20,7 @@ class WeatherProvider extends ChangeNotifier {
 
           case ConnectivityResult.wifi:
             connectmodal.connectivityStatus = "Wifi";
+            Text("On WiFi");
             notifyListeners();
             break;
 
@@ -39,12 +40,18 @@ class WeatherProvider extends ChangeNotifier {
 
   /////
   late Map data;
+  late Map currentdata;
+  late Map forecastedata;
 
   WeatherProvider() {
     searchcity();
   }
   searchcity({String val = "surat"}) async {
     data = await APIhelper.apihelper.getWeatherResponse(query: val) ?? {};
+    currentdata =
+        await APIhelper.apihelper.getCurrentWeatherResponse(query: val) ?? {};
+    forecastedata =
+        await APIhelper.apihelper.getForecasteWeatherResponse(query: val) ?? {};
     notifyListeners();
     return 0;
   }
