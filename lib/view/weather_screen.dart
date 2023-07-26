@@ -15,12 +15,6 @@ class WeatherScreen extends StatefulWidget {
 
 class _WeatherScreenState extends State<WeatherScreen> {
   @override
-  void initState() {
-    super.initState();
-    Provider.of<WeatherProvider>(context, listen: false).check();
-  }
-
-  @override
   Widget build(BuildContext context) {
     Connectivity connectivity = Connectivity();
 
@@ -105,10 +99,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           child: Column(
                                             children: [
                                               Text(("${posts["name"]}")),
+                                              Text(("${posts["name"]}")),
+                                              Image.network(
+                                                  "http:${currentposts["condition"]["icon"]}"),
+                                              Image.network(
+                                                  "http:${forecasteposts["forecastday"][0]["hour"][0]["condition"]["icon"]}"),
                                               Text(
-                                                  "${currentposts["condition"]["icon"]}"),
-                                              Text(
-                                                  "${forecasteposts["forecastday"][0]["hour"][0]["condition"]["text"]}"),
+                                                  "${forecasteposts["forecastday"][0]["day"]["maxtemp_c"]}°")
                                             ],
                                           ),
                                           decoration: BoxDecoration(

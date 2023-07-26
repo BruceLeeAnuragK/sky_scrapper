@@ -10,9 +10,12 @@ class IntroScreen extends StatefulWidget {
 class _IntroScreenState extends State<IntroScreen> {
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 7), () {
-      Navigator.of(context).pushNamed("/");
-    });
+    Future.delayed(
+      const Duration(seconds: 7),
+      () {
+        Navigator.of(context).pushNamed("/");
+      },
+    );
   }
 
   @override
