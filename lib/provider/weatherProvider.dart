@@ -41,20 +41,25 @@ class WeatherProvider extends ChangeNotifier {
 
   /////
   Map data = {};
-  late Map currentdata;
-  late Map forecastedata;
+  Map currentdata = {};
+  late List forecastedata = [];
 
   WeatherProvider() {
     searchcity();
+    currentData();
   }
   searchcity({String val = "surat"}) async {
     data = await APIhelper.apihelper.getWeatherResponse(query: val) ?? {};
-    currentdata =
-        await APIhelper.apihelper.getCurrentWeatherResponse(query: val) ?? {};
+
     forecastedata =
-        await APIhelper.apihelper.getForecasteWeatherResponse(query: val) ?? {};
+        await APIhelper.apihelper.getForecasteWeatherResponse(query: val) ?? [];
 
     notifyListeners();
     return 0;
+  }
+
+  currentData({String val = "surat"}) async {
+    currentdata =
+        await APIhelper.apihelper.getCurrentWeatherResponse(query: val) ?? {};
   }
 }

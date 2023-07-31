@@ -29,10 +29,10 @@ class _IntroScreenState extends State<IntroScreen> {
             Container(
               height: 250,
               width: double.infinity,
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: NetworkImage(
                       "https://cdn.dribbble.com/users/2277649/screenshots/8498294/weather_dribbble_size.gif.gif"),
                   fit: BoxFit.fill,
