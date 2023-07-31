@@ -40,7 +40,7 @@ class APIhelper {
 
   Future<Map?> getForecasteWeatherResponse({required String query}) async {
     String forecasteWeatherApi =
-        "http://api.weatherapi.com/v1/forecast.json?key= c6f63f932d1e4e3b8c334544232407&q=$query&days=1&aqi=no&alerts=no";
+        "http://api.weatherapi.com/v1/forecast.json?key=c6f63f932d1e4e3b8c334544232407&q=$query&days=1&aqi=no&alerts=no";
     http.Response response = await http.get(Uri.parse(forecasteWeatherApi));
 
     if (response.statusCode == 200) {

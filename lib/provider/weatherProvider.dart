@@ -9,8 +9,9 @@ class WeatherProvider extends ChangeNotifier {
   Connect connectmodal = Connect(
     connectivityStatus: "Waiting",
   );
-  void check() {
-    connectmodal.connectivitystream = connectivity.onConnectivityChanged.listen(
+  void check() async {
+    connectmodal.connectivitystream =
+        await connectivity.onConnectivityChanged.listen(
       (ConnectivityResult connectivityresult) {
         switch (connectivityresult) {
           case ConnectivityResult.mobile:
@@ -20,7 +21,7 @@ class WeatherProvider extends ChangeNotifier {
 
           case ConnectivityResult.wifi:
             connectmodal.connectivityStatus = "Wifi";
-            Text("On WiFi");
+            print("On WiFi");
             notifyListeners();
             break;
 
@@ -39,7 +40,7 @@ class WeatherProvider extends ChangeNotifier {
   }
 
   /////
-  late Map data;
+  Map data = {};
   late Map currentdata;
   late Map forecastedata;
 
@@ -52,6 +53,7 @@ class WeatherProvider extends ChangeNotifier {
         await APIhelper.apihelper.getCurrentWeatherResponse(query: val) ?? {};
     forecastedata =
         await APIhelper.apihelper.getForecasteWeatherResponse(query: val) ?? {};
+
     notifyListeners();
     return 0;
   }

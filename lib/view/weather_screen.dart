@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sky_scrapper1/helper/helper_provider.dart';
+import 'package:sky_scrapper1/provider/theme_provider.dart';
 import 'package:sky_scrapper1/provider/weatherProvider.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -15,12 +16,19 @@ class WeatherScreen extends StatefulWidget {
 
 class _WeatherScreenState extends State<WeatherScreen> {
   @override
+  void initState() {
+    super.initState();
+    Provider.of<WeatherProvider>(context, listen: false).check();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Connectivity connectivity = Connectivity();
 
     return Consumer<WeatherProvider>(builder: (context, provider, child) {
       return Scaffold(
         appBar: AppBar(
+          leading: Container(),
           backgroundColor: Colors.blueAccent.shade100,
           title: Text(
             "Weather App",
@@ -29,6 +37,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
               fontSize: 20,
             ),
           ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .changeTheme();
+              },
+              icon: Icon(Icons.circle),
+            ),
+          ],
           centerTitle: true,
         ),
         body: (provider.connectmodal.connectivityStatus == "Waiting")
@@ -47,20 +64,20 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           SingleChildScrollView(
                             child: Stack(
                               children: [
-                                Container(
-                                  height: 900,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Colors.blueAccent.shade100,
-                                        Colors.blueAccent.shade700,
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                // Container(
+                                //   height: 900,
+                                //   width: double.infinity,
+                                //   decoration: BoxDecoration(
+                                //     gradient: LinearGradient(
+                                //       begin: Alignment.topCenter,
+                                //       end: Alignment.bottomCenter,
+                                //       colors: [
+                                //         Colors.blueAccent.shade100,
+                                //         Colors.blueAccent.shade700,
+                                //       ],
+                                //     ),
+                                //   ),
+                                // ),
                                 Column(
                                   children: [
                                     Padding(
@@ -154,7 +171,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                       ),
                                     ),
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),

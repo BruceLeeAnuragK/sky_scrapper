@@ -47,7 +47,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Icon(Icons.book, size: 300, color: Colors.blue.shade100),
+            Icon(Icons.cloud, size: 300, color: Colors.blue.shade100),
             CircularProgressIndicator(
               color: Colors.blue.shade100,
             ),
