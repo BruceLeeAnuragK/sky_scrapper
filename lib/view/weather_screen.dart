@@ -38,12 +38,32 @@ class _WeatherScreenState extends State<WeatherScreen> {
           ),
           actions: [
             IconButton(
-              onPressed: () {
-                Provider.of<ThemeProvider>(context, listen: false)
-                    .changeTheme();
-              },
-              icon: const Icon(Icons.circle),
+              onPressed: () {},
+              icon: Icon(
+                Icons.star_border_sharp,
+                color: Provider.of<ThemeProvider>(context, listen: true)
+                        .themeModel
+                        .isDark
+                    ? Colors.black
+                    : Colors.white,
+              ),
             ),
+            IconButton(
+                onPressed: () {
+                  Provider.of<ThemeProvider>(context, listen: false)
+                      .changeTheme();
+                },
+                icon: Provider.of<ThemeProvider>(context, listen: true)
+                        .themeModel
+                        .isDark
+                    ? Icon(
+                        Icons.nightlight,
+                        color: Colors.black,
+                      )
+                    : Icon(
+                        Icons.sunny,
+                        color: Colors.white,
+                      )),
           ],
           centerTitle: true,
         ),
@@ -83,7 +103,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                       padding: const EdgeInsets.all(10),
                                       child: TextField(
                                         decoration: InputDecoration(
-                                          suffixIconColor: Colors.white,
+                                          suffixIconColor:
+                                              Provider.of<ThemeProvider>(
+                                                          context,
+                                                          listen: true)
+                                                      .themeModel
+                                                      .isDark
+                                                  ? Colors.black
+                                                  : Colors.white,
                                           suffixIcon: const Icon(
                                             Icons.search,
                                             size: 30,
@@ -110,7 +137,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           sigmaY: 15,
                                         ),
                                         child: Container(
-                                          height: 250,
+                                          height: 280,
                                           width: 300,
                                           child: Column(
                                             children: [
@@ -122,8 +149,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                                   Text(
                                                     ("${posts["name"]}"),
                                                     style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 50,
+                                                      color:
+                                                          Provider.of<ThemeProvider>(
+                                                                      context,
+                                                                      listen:
+                                                                          true)
+                                                                  .themeModel
+                                                                  .isDark
+                                                              ? Colors.black
+                                                              : Colors.white,
+                                                      fontSize: 30,
                                                     ),
                                                   ),
                                                   Image.network(
@@ -141,7 +176,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                                   Text(
                                                     ("${posts["region"]},\n${posts["country"]}"),
                                                     style: TextStyle(
-                                                      color: Colors.white,
+                                                      color:
+                                                          Provider.of<ThemeProvider>(
+                                                                      context,
+                                                                      listen:
+                                                                          true)
+                                                                  .themeModel
+                                                                  .isDark
+                                                              ? Colors.black
+                                                              : Colors.white,
                                                       fontSize: 20,
                                                     ),
                                                   ),
@@ -166,16 +209,63 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                                     child: Text(
                                                       "${currentposts["temp_c"]}°C",
                                                       style: TextStyle(
-                                                        color: Colors.white,
+                                                        color: Provider.of<
+                                                                        ThemeProvider>(
+                                                                    context,
+                                                                    listen:
+                                                                        true)
+                                                                .themeModel
+                                                                .isDark
+                                                            ? Colors.black
+                                                            : Colors.white,
                                                         fontSize: 30,
                                                       ),
                                                     ),
                                                   ),
-                                                  Text(
-                                                    ("                            "),
-                                                    style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 10,
+                                                ],
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      "${forecasteposts[0]["date"]}",
+                                                      style: TextStyle(
+                                                        color: Provider.of<
+                                                                        ThemeProvider>(
+                                                                    context,
+                                                                    listen:
+                                                                        true)
+                                                                .themeModel
+                                                                .isDark
+                                                            ? Colors.black
+                                                            : Colors.white,
+                                                        fontSize: 20,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 30,
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                      Icons.star_border_sharp,
+                                                      color:
+                                                          Provider.of<ThemeProvider>(
+                                                                      context,
+                                                                      listen:
+                                                                          true)
+                                                                  .themeModel
+                                                                  .isDark
+                                                              ? Colors.black
+                                                              : Colors.white,
+                                                      size: 30,
                                                     ),
                                                   ),
                                                 ],
@@ -208,7 +298,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           sigmaY: 15,
                                         ),
                                         child: Container(
-                                          height: 300,
+                                          height: 400,
                                           width: 300,
                                           decoration: BoxDecoration(
                                             borderRadius:
@@ -240,8 +330,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                                         Text(
                                                           "Time",
                                                           style: TextStyle(
-                                                              color:
-                                                                  Colors.white),
+                                                            color: Provider.of<
+                                                                            ThemeProvider>(
+                                                                        context,
+                                                                        listen:
+                                                                            true)
+                                                                    .themeModel
+                                                                    .isDark
+                                                                ? Colors.black
+                                                                : Colors.white,
+                                                          ),
                                                         ),
                                                         Text(
                                                           "${provider.forecastedata[0]['hour'][index]['time']}"
@@ -251,8 +349,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                                                           ' '),
                                                                   16),
                                                           style: TextStyle(
-                                                              color:
-                                                                  Colors.white),
+                                                            color: Provider.of<
+                                                                            ThemeProvider>(
+                                                                        context,
+                                                                        listen:
+                                                                            true)
+                                                                    .themeModel
+                                                                    .isDark
+                                                                ? Colors.black
+                                                                : Colors.white,
+                                                          ),
                                                         ),
                                                       ],
                                                     ),
@@ -265,7 +371,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                                     Text(
                                                       "${provider.forecastedata[0]['hour'][index]['temp_c']}°C",
                                                       style: TextStyle(
-                                                        color: Colors.white,
+                                                        color: Provider.of<
+                                                                        ThemeProvider>(
+                                                                    context,
+                                                                    listen:
+                                                                        true)
+                                                                .themeModel
+                                                                .isDark
+                                                            ? Colors.black
+                                                            : Colors.white,
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -276,19 +390,60 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                                         "https://cdn-icons-png.flaticon.com/128/9231/9231936.png",
                                                         height: 35),
                                                     Text(
-                                                      "${provider.forecastedata[0]['hour'][index]['wind_kph']}km",
+                                                      "${provider.forecastedata[0]['hour'][index]['wind_kph']} km",
                                                       style: TextStyle(
-                                                        color: Colors.white,
+                                                        color: Provider.of<
+                                                                        ThemeProvider>(
+                                                                    context,
+                                                                    listen:
+                                                                        true)
+                                                                .themeModel
+                                                                .isDark
+                                                            ? Colors.black
+                                                            : Colors.white,
                                                       ),
                                                     ),
                                                     Divider(),
-                                                    Image.network(
-                                                        "https://cdn-icons-png.flaticon.com/128/1628/1628763.png",
-                                                        height: 35),
-                                                    Text(
-                                                      "${provider.forecastedata[0]['hour'][index]['humidity']}%",
-                                                      style: TextStyle(
-                                                        color: Colors.white,
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Column(
+                                                        children: [
+                                                          Text(
+                                                            "Humidity",
+                                                            style: TextStyle(
+                                                              color: Provider.of<
+                                                                              ThemeProvider>(
+                                                                          context,
+                                                                          listen:
+                                                                              true)
+                                                                      .themeModel
+                                                                      .isDark
+                                                                  ? Colors.black
+                                                                  : Colors
+                                                                      .white,
+                                                            ),
+                                                          ),
+                                                          Image.network(
+                                                              "https://cdn-icons-png.flaticon.com/128/1628/1628763.png",
+                                                              height: 35),
+                                                          Text(
+                                                            "${provider.forecastedata[0]['hour'][index]['humidity']}%",
+                                                            style: TextStyle(
+                                                              color: Provider.of<
+                                                                              ThemeProvider>(
+                                                                          context,
+                                                                          listen:
+                                                                              true)
+                                                                      .themeModel
+                                                                      .isDark
+                                                                  ? Colors.black
+                                                                  : Colors
+                                                                      .white,
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ],

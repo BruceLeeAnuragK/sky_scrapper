@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sky_scrapper1/modal/theme_model.dart';
 import 'package:sky_scrapper1/provider/theme_provider.dart';
 import 'package:sky_scrapper1/provider/weatherProvider.dart';
 import 'package:sky_scrapper1/view/splash_screen.dart';
 import 'package:sky_scrapper1/view/weather_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences Pref = await SharedPreferences.getInstance();
-
+  SharedPreferences Book = await SharedPreferences.getInstance();
   bool isDark = Pref.getBool("isDark") ?? false;
-
+  List<dynamic> isbookmark = Book.getStringList("bookmark") ?? [];
   runApp(
     MultiProvider(
       providers: [
@@ -20,9 +20,13 @@ void main() async {
           create: (context) => WeatherProvider(),
         ),
         ChangeNotifierProvider(
-          create: (context) =>
-              ThemeProvider(themeModel: ThemeModel(isDark: isDark)),
+          create: (context) => ThemeProvider(
+            themeModel: ThemeModel(isDark: isDark),
+          ),
         ),
+        // ChangeNotifierProvider(
+        //   create: (context) => BookMarkProvider(bookmark: isbookmark),
+        // ),
       ],
       child: const MyApp(),
     ),

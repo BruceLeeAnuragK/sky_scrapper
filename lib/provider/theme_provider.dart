@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sky_scrapper1/modal/theme_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sky_scrapper1/modal/theme_model.dart';
 
 class ThemeProvider extends ChangeNotifier {
   ThemeModel themeModel;
