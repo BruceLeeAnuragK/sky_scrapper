@@ -23,7 +23,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List mylist = [];
     return Consumer<WeatherProvider>(builder: (context, provider, child) {
       return Scaffold(
         appBar: AppBar(
@@ -38,7 +37,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed("bookmark_page ");
+              },
               icon: Icon(
                 Icons.star_border_sharp,
                 color: Provider.of<ThemeProvider>(context, listen: true)

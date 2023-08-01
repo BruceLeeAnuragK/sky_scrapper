@@ -1,11 +1,11 @@
-class Bookmark {
+class BookmarkModel {
   String city;
   String state;
   String country;
   String date;
   String temp;
 
-  Bookmark({
+  BookmarkModel({
     required this.city,
     required this.state,
     required this.country,

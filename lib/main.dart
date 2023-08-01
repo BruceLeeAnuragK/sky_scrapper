@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sky_scrapper1/modal/theme_model.dart';
+import 'package:sky_scrapper1/provider/bookmark_provider.dart';
 import 'package:sky_scrapper1/provider/theme_provider.dart';
 import 'package:sky_scrapper1/provider/weatherProvider.dart';
+import 'package:sky_scrapper1/view/bookmark_page.dart';
 import 'package:sky_scrapper1/view/splash_screen.dart';
 import 'package:sky_scrapper1/view/weather_screen.dart';
 
@@ -12,7 +14,7 @@ void main() async {
   SharedPreferences Pref = await SharedPreferences.getInstance();
   SharedPreferences Book = await SharedPreferences.getInstance();
   bool isDark = Pref.getBool("isDark") ?? false;
-  List<dynamic> isbookmark = Book.getStringList("bookmark") ?? [];
+  List isbookmark = Book.getStringList("bookmark") ?? [];
   runApp(
     MultiProvider(
       providers: [
@@ -24,9 +26,9 @@ void main() async {
             themeModel: ThemeModel(isDark: isDark),
           ),
         ),
-        // ChangeNotifierProvider(
-        //   create: (context) => BookMarkProvider(bookmark: isbookmark),
-        // ),
+        ChangeNotifierProvider(
+          create: (context) => BookMarkProvider(bookmark: isbookmark),
+        ),
       ],
       child: const MyApp(),
     ),
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
               : ThemeMode.light,
       initialRoute: "splash_screen",
       routes: {
+        "bookmark_page": (context) => BookMarkPage(),
         "splash_screen": (context) => IntroScreen(),
         "/": (context) => WeatherScreen(),
       },
