@@ -1,3 +1,4 @@
+
 # sky_scrapper
 
 A new Flutter project.
@@ -37,4 +38,21 @@ access to weather data. In scenarios where network connectivity is unavailable, 
 gracefully handles errors and presents an error screen, notifying the user about the network
 unavailability and suggesting alternative actions.
 
-<img src="" height=200>
+<img src="https://github.com/BruceLeeAnuragK/sky_scrapper/assets/113960212/66e3e63e-376a-4543-b952-b0d34e92cbf8" height=200>
+<img src="https://github.com/BruceLeeAnuragK/sky_scrapper/assets/113960212/e40c304c-a18a-421b-bc0a-9c42cc733898" height=200>
+<img src="https://github.com/BruceLeeAnuragK/sky_scrapper/assets/113960212/86455695-3b3e-4716-92e0-3e9e1e9fb6a2" height=200>
+<img src="https://github.com/BruceLeeAnuragK/sky_scrapper/assets/113960212/e1ff5e52-41e1-46aa-aad2-870a52cb5c60" height=200>
+<img src="https://github.com/BruceLeeAnuragK/sky_scrapper/assets/113960212/2a55f300-a303-4b05-9c5c-c01222709c73" height=200>
+https://github.com/BruceLeeAnuragK/sky_scrapper/assets/113960212/4acbe16c-8538-45fc-a807-670796f34881
+
+
+
+
+
+
+
+
+
+
+
+
