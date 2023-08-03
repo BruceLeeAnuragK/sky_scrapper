@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sky_scrapper1/modal/bookmark_model.dart';
 import 'package:sky_scrapper1/modal/theme_model.dart';
 import 'package:sky_scrapper1/provider/bookmark_provider.dart';
 import 'package:sky_scrapper1/provider/theme_provider.dart';
@@ -14,7 +15,7 @@ void main() async {
   SharedPreferences Pref = await SharedPreferences.getInstance();
   SharedPreferences Book = await SharedPreferences.getInstance();
   bool isDark = Pref.getBool("isDark") ?? false;
-  List isbookmark = Book.getStringList("bookmark") ?? [];
+  List<String> isbookmark = Book.getStringList("BOOKMARK_KEY") ?? [];
   runApp(
     MultiProvider(
       providers: [
@@ -27,10 +28,12 @@ void main() async {
           ),
         ),
         ChangeNotifierProvider(
-          create: (context) => BookMarkProvider(bookmark: isbookmark),
-        ),
+          create: (context) => BookMarkProvider(
+            bookmark: BookmarkModel(weather: isbookmark),
+          ),
+        )
       ],
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }

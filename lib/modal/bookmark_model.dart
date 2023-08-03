@@ -1,15 +1,5 @@
 class BookmarkModel {
-  String city;
-  String state;
-  String country;
-  String date;
-  String temp;
+  List<String> weather;
 
-  BookmarkModel({
-    required this.city,
-    required this.state,
-    required this.country,
-    required this.date,
-    required this.temp,
-  });
+  BookmarkModel({required this.weather});
 }
